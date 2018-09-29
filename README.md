@@ -31,7 +31,7 @@ As imagens de treino e as respectivas versões binárias devem ser organizadas c
 └── script.py
 ```
 O arquivo `script.py` realiza o treinamento com base no dataset fornecido e aplica o segmentador no vídeo capturado pela webcam.
-```
+```python
 import cv2
 import numpy as np
 import bayesian_sgm
