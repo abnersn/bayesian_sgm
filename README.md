@@ -125,4 +125,4 @@ A Figura 2 mostra o resultado obtido pelo classificador Naive-Bayes para diferen
 * *Son Lam Phung, Abdesselam Bouzerdoum, and Douglas Chai*. **Skin segmentation using color pixel classification: analysis and comparison**. IEEEtransactions on pattern analysis and machine intelligence, 27(1):148–154, 2005.
 
 ## Autor
-* Abner Nascimento - Universidade Federal do Ceará.
+* Abner Nascimento - [Universidade Federal do Ceará](http://www.ec.ufc.br/).
