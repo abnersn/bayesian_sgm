@@ -2,9 +2,53 @@
 Este trabalho propõe o uso de um classificador Naive Bayes para a tarefa de segmentação de imagens por cor, empregando duas classes de dados em seu modelo estatístico: pele e não-pele. Busca-se assim, obter um algoritmo de segmentação por cor dotado de bons níveis de precisão e velocidade suficiente para ser aplicado em filmagens em tempo real em um computador pessoal.
 
 ## Pré-requisitos
-* Python 2.7
-* OpenCV 3.0.0 ou superior
-* Numpy 1.9.2 ou superior
+* Python 3.5.5
+* OpenCV 3.1.0 ou superior
+* Numpy 1.14.3 ou superior
+
+## Instalação
+Após a instalação dos pré-requisitos, é possível instalar o segmentador pelo repositório de pacotes do python com o comando:
+```
+sudo pip install bayesian_sgm
+```
+## Exemplo
+As imagens de treino e as respectivas versões binárias devem ser organizadas com o mesmo nome de arquivo, porém em pastas diferentes. No exemplo abaixo, as imagens coloridas estão na pasta `n_dataset`, e a classificação binária em `c_dataset`.
+```
+.
+├── datasets
+│   ├── c_dataset
+│   │   ├── treino1.jpg
+│   │   ├── treino2.jpg
+│   │   ├── treino3.jpg
+│   │   ├── treino4.jpg
+│   │   └── ...
+│   └── n_dataset
+│       ├── treino1.jpg
+│       ├── treino2.jpg
+│       ├── treino3.jpg
+│       ├── treino4.jpg
+│       └── ...
+└── script.py
+```
+O arquivo `script.py` realiza o treinamento com base no dataset fornecido e aplica o segmentador no vídeo capturado pela webcam.
+```
+import cv2
+import numpy as np
+import bayesian_sgm
+
+seg = bayesian_sgm.BayesianColorSGM()
+seg.learn_from_dirs("datasets/c_dataset", "datasets/n_dataset")
+
+cap = cv2.VideoCapture(0)
+while(True):
+    ret, img = cap.read()
+    bin = seg.apply(img)
+    cv2.imshow("frame", img)
+    cv2.imshow("binary", bin)
+    k = cv2.waitKey(30) & 0xFF
+    if k == 27:
+        break
+```
 
 ## Fundamentação Teórica
 
@@ -79,3 +123,6 @@ A Figura 2 mostra o resultado obtido pelo classificador Naive-Bayes para diferen
 * *Rein-Lien Hsu, M. Abdel-Mottaleb, and A. K. Jain*. **Face detection in color images**. IEEE Transactions on Pattern Analysis and Machine Intelligence, 24(5):696–706, Maio de 2002.
  
 * *Son Lam Phung, Abdesselam Bouzerdoum, and Douglas Chai*. **Skin segmentation using color pixel classification: analysis and comparison**. IEEEtransactions on pattern analysis and machine intelligence, 27(1):148–154, 2005.
+
+## Autor
+* Abner Nascimento - Universidade Federal do Ceará.
