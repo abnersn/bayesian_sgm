@@ -12,7 +12,7 @@ O problema resume-se, então, a determinar se um dado conjunto de pixels pertenc
 
 Este trabalho propõe o uso de um classificador Naive Bayes para esta tarefa, empregando duas classes de dados em seu modelo estatístico: pele e não-pele. Busca-se assim, obter um algoritmo de segmentação por cor dotado de bons níveis de precisão e velocidade suficiente para ser aplicado em filmagens em tempo real em um computador pessoal. A seção materiais e métodos descreve os conceitos matemáticos empregados; posteriormente, a seção análise mostra os resultados obtidos e comparações de desempenho em diferentes espaços de cor; por fim, a seção Conclusão e Perspectivas Futuras interpreta os resultados e sintetiza as linhas de pesquisa futuras para este trabalho.
 
-Materiais e métodos
+Metodologia
 -------------
 
 O teorema de Bayes, nomeado em homenagem a seu idealizador, Thomas Bayes (1701-1761), estabelece uma relação matemática para as probabilidades de eventos condicionados a evidências prévias. A probabilidade de um evento A, dado que houve a observação de uma evidência B é descrita por:
@@ -35,26 +35,33 @@ Esta modelagem matemática pode ser aplicada para a segmentação de imagens com
 
 -   ![](https://latex.codecogs.com/gif.latex?P%28B%29) = probabilidade de encontrar pele.
 
-![Exemplo de imagem do conjunto classificado manualmente.](https://s3-sa-east-1.amazonaws.com/abnersn/github/bayesian-segmentator/demo.jpg)
+<p align="center">
+<img width="200" src="https://s3-sa-east-1.amazonaws.com/abnersn/github/bayesian-segmentator/demo.jpg">
+<br>
+<strong>Figura 1:</strong> Exemplo de imagem do conjunto classificado manualmente.
+</p>
 
-A partir de um conjunto de imagens como a figura acima, é possível calcular as probabilidades *a priori* necessárias para a aplicação do teorema de Bayes. Após a análise de todas as imagens em um conjunto pré classificado com a ajuda de um editor de imagens, os valores obtidos das probabilidades para cada canal são armazenados em uma tabela de referência.
+A partir de um conjunto de imagens como a Figura 1, é possível calcular as probabilidades *a priori* necessárias para a aplicação do teorema de Bayes. Após a análise de todas as imagens em um conjunto pré classificado com a ajuda de um editor de imagens, os valores obtidos das probabilidades para cada canal são armazenados em uma tabela de referência.
 
-Ao receber uma imagem inédita, o algoritmo busca, para cada pixel, uma probabilidade correspondente na tabela, de acordo com os valores de seus canais, isto é, sua cor. Em seguida os valores obtidos são multiplicados, conforme a Equação \[eq:2\], para obter a classificação final. Dessa forma, a imagem se torna uma matriz de probabilidades inferidas, com valores entre 0 e 1. Determina-se, então, um limiar $\lambda$, de modo que:
+Ao receber uma imagem inédita, o algoritmo busca, para cada pixel, uma probabilidade correspondente na tabela, de acordo com os valores de seus canais, isto é, sua cor. Em seguida os valores obtidos são multiplicados, conforme, para obter a classificação final. Dessa forma, a imagem se torna uma matriz de probabilidades inferidas, com valores entre 0 e 1. Determina-se, então, um limiar ![](https://latex.codecogs.com/gif.latex?%5Clambda), de modo que:
 
-$$C_A(p_{i}) = \left\{
-        \begin{array}{ll}
-            0 & \quad p_i \leq \lambda \\
-            1 & \quad p_i > \lambda
-        \end{array}
-    \right..$$
+![](https://latex.codecogs.com/gif.latex?C_A%28p_%7Bi%7D%29%20%3D%20%5Cleft%5C%7B%20%5Cbegin%7Barray%7D%7Bll%7D%200%20%26%20%5Cquad%20p_i%20%5Cleq%20%5Clambda%20%5C%5C%201%20%26%20%5Cquad%20p_i%20%3E%20%5Clambda%20%5Cend%7Barray%7D%20%5Cright.).
 
-Onde $p_i$ é a probabilidade inferida e $C_A$ corresponde à classe atribuída ao pixel, isto é, 0 para não-pele e 1 para pele.
+Onde ![](https://latex.codecogs.com/gif.latex?p_i) é a probabilidade inferida e ![](https://latex.codecogs.com/gif.latex?C_A) corresponde à classe atribuída ao pixel, isto é, 0 para não-pele e 1 para pele.
 
-Para avaliar a capacidade de acerto do algoritmo, utiliza-se a tabela de referência para classificar as imagens usadas no treino. Dessa forma, é possível comparar as probabilidades inferidas com a classificação realizada manualmente. Considerando $\epsilon$ o erro quadrático médio do algoritmo aplicado em uma imagem composta por $n$ pixels, obtém-se: $$\epsilon=\sum_{i=1}^{n}{\frac{(p_i - C_i)^2}{n}},$$ onde $C_i$ representa o valor atribuído ao $i$-ésimo pixel na classificação manual.
+Para avaliar a capacidade de acerto do algoritmo, as probabilidades inferidas são comparadas com a classificação realizada manualmente. Considerando ![](https://latex.codecogs.com/gif.latex?%5Cepsilon) o erro quadrático médio do algoritmo aplicado em uma imagem composta por ![](https://latex.codecogs.com/gif.latex?n) pixels, obtém-se:
+
+![](https://latex.codecogs.com/gif.latex?%5Cepsilon%3D%5Csum_%7Bi%3D1%7D%5E%7Bn%7D%7B%5Cfrac%7B%28p_i%20-%20C_i%29%5E2%7D%7Bn%7D%7D),
+
+onde ![](https://latex.codecogs.com/gif.latex?C_i) representa o valor atribuído ao ![](https://latex.codecogs.com/gif.latex?i)-ésimo pixel na classificação manual.
 
 Resultados
 ==========
 
-A Figura \[fig:result\] mostra o resultado obtido pelo classificador Naive-Bayes para diferentes espaços de cor, nomeadamente, HSV, YCrCb e RGB, bem como as respectivas taxas de erro quadrático médio. As imagens originais estão disponíveis no banco de imagens Wikimedia Commons e foram classificadas manualmente com o auxílio do editor de imagens GIMP. Neste trabalho, para a obtenção das probabilidades *a priori* foram empregadas 13 imagens, tomando a diversidade étnica como critério para sua escolha. As taxas de acerto obtidas variam, pois, de $88,4\%$ para o espaço RGB a $90,6\%$ no espaço YCrCb.
+A Figura 2 mostra o resultado obtido pelo classificador Naive-Bayes para diferentes espaços de cor, nomeadamente, HSV, YCrCb e RGB, bem como as respectivas taxas de erro quadrático médio. As imagens originais estão disponíveis no banco de imagens Wikimedia Commons e foram classificadas manualmente com o auxílio do editor de imagens GIMP. Neste trabalho, para a obtenção das probabilidades *a priori* foram empregadas 13 imagens, tomando a diversidade étnica como critério para sua escolha. As taxas de acerto obtidas variam, pois, de 88,4\% para o espaço RGB a 90,6\% no espaço YCrCb.
 
-![Comparativo de desempenho e taxas de erro em diferentes espaços de cor.[]{data-label="fig:result"}](https://s3-sa-east-1.amazonaws.com/abnersn/github/bayesian-segmentator/result.png)
+<p align="center">
+<img width="500" src="https://s3-sa-east-1.amazonaws.com/abnersn/github/bayesian-segmentator/result.png">
+<br>
+<strong>Figura 2:</strong> Comparativo de desempenho e taxas de erro em diferentes espaços de cor.
+</p>
