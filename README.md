@@ -9,7 +9,7 @@ Este trabalho propõe o uso de um classificador Naive Bayes para a tarefa de seg
 ## Instalação
 Após a instalação dos pré-requisitos, é possível instalar o segmentador pelo repositório de pacotes do python com o comando:
 ```
-sudo pip install bayesian_sgm
+$ sudo pip install bayesian_sgm
 ```
 ## Exemplo
 As imagens de treino e as respectivas versões binárias devem ser organizadas com o mesmo nome de arquivo, porém em pastas diferentes. No exemplo abaixo, as imagens coloridas estão na pasta `n_dataset`, e a classificação binária em `c_dataset`.
