@@ -1,4 +1,12 @@
 # Segmentação Bayesiana de Cores em Imagens
+
+
+![PyPI](https://img.shields.io/pypi/v/nine.svg?style=flat-square)
+![GitHub release](https://img.shields.io/github/release/qubyte/rubidium.svg?style=flat-square)
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/Django.svg?style=flat-square)
+[![Twitter Follow](https://img.shields.io/twitter/follow/espadrine.svg?style=flat-square&label=Follow)](https://twitter.com/asnasc) 
+
+
 Este trabalho propõe o uso de um classificador Naive Bayes para a tarefa de segmentação de imagens por cor, empregando duas classes de dados em seu modelo estatístico: pele e não-pele. Busca-se assim, obter um algoritmo de segmentação por cor dotado de bons níveis de precisão e velocidade suficiente para ser aplicado em filmagens em tempo real em um computador pessoal.
 
 ## Pré-requisitos
