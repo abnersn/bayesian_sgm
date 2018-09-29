@@ -18,7 +18,7 @@ class BayesianColorSGM(object):
 		# Verifica se os diretórios existem
 		for dir in [c_dir, n_dir]:
 			if not os.path.exists(dir):
-				print "ERROR: Could not load directory "+dir
+				print("ERROR: Could not load directory "+dir)
 				sys.exit(1)
 
 		# Dados não classificados para cada canal serão acumulados em seus respectivos vetores
@@ -35,7 +35,7 @@ class BayesianColorSGM(object):
 				v_data = np.append(v_data, v.flatten())
 
 		if len(h_data) == 0 or len(s_data) == 0 or len(v_data) == 0:
-			print "ERROR: Could not load data from images"
+			print("ERROR: Could not load data from images")
 			sys.exit(1)
 
 		# Calcula e trata as probabilidades dos valores para cada canal

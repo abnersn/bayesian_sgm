@@ -7,7 +7,7 @@ import bayesian
 import normalize
 
 seg = bayesian.BayesianColorSGM()
-seg.learn_from_dirs("datasets/classified", "datasets/unclassified")
+seg.learn_from_dirs("datasets/c_dataset", "datasets/n_dataset")
 
 cap = cv2.VideoCapture(0)
 while(True):
