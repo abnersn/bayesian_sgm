@@ -1,0 +1,1 @@
+from bayesian_sgm.segmentator import BayesianColorSGM
