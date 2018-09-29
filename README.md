@@ -1,8 +1,14 @@
-Fundamentação Teórica
-==========
+# Segmentação Bayesiana de Cores em Imagens
+Este trabalho propõe o uso de um classificador Naive Bayes para a tarefa de segmentação de imagens por cor, empregando duas classes de dados em seu modelo estatístico: pele e não-pele. Busca-se assim, obter um algoritmo de segmentação por cor dotado de bons níveis de precisão e velocidade suficiente para ser aplicado em filmagens em tempo real em um computador pessoal.
 
-Introdução
-----------
+## Pré-requisitos
+* Python 2.7
+* OpenCV 3.0.0 ou superior
+* Numpy 1.9.2 ou superior
+
+## Fundamentação Teórica
+
+### Introdução
 
 A separação de regiões correspondentes à pele humana em imagens digitais possui fundamental importância para a solução de problemas relacionados à visão computacional, como detecção de face, detecção de gestos e classificação de conteúdo. Tais aplicações empregam algoritmos de segmentação com o objetivo de delimitar áreas de interesse nas imagens, de modo a reduzir o escopo de informações a serem processadas e obter ganhos de desempenho.
 
@@ -10,10 +16,7 @@ Diversas são as técnicas envolvidas na tarefa de segmentação de imagens, com
 
 O problema resume-se, então, a determinar se um dado conjunto de pixels pertence ou não a uma região de pele humana com base em sua cor. Nesse contexto, a escolha do espaço de cores mais adequado aos matizes da pele humana, bem como o emprego de um modelo estatístico que permita analisar um conjunto previamente classificado de imagens pode ser uma solução eficaz. Tais escolhas estão intrinsecamente relacionadas à sensibilidade dos algoritmos de segmentação a problemas como condições de iluminação desfavoráveis e oclusão.
 
-Este trabalho propõe o uso de um classificador Naive Bayes para esta tarefa, empregando duas classes de dados em seu modelo estatístico: pele e não-pele. Busca-se assim, obter um algoritmo de segmentação por cor dotado de bons níveis de precisão e velocidade suficiente para ser aplicado em filmagens em tempo real em um computador pessoal. A seção materiais e métodos descreve os conceitos matemáticos empregados; posteriormente, a seção análise mostra os resultados obtidos e comparações de desempenho em diferentes espaços de cor; por fim, a seção Conclusão e Perspectivas Futuras interpreta os resultados e sintetiza as linhas de pesquisa futuras para este trabalho.
-
-Metodologia
--------------
+### Metodologia
 
 O teorema de Bayes, nomeado em homenagem a seu idealizador, Thomas Bayes (1701-1761), estabelece uma relação matemática para as probabilidades de eventos condicionados a evidências prévias. A probabilidade de um evento A, dado que houve a observação de uma evidência B é descrita por:
 
@@ -55,8 +58,7 @@ Para avaliar a capacidade de acerto do algoritmo, as probabilidades inferidas s�
 
 onde ![](https://latex.codecogs.com/gif.latex?C_i) representa o valor atribuído ao ![](https://latex.codecogs.com/gif.latex?i)-ésimo pixel na classificação manual.
 
-Resultados
-==========
+### Resultados
 
 A Figura 2 mostra o resultado obtido pelo classificador Naive-Bayes para diferentes espaços de cor, nomeadamente, HSV, YCrCb e RGB, bem como as respectivas taxas de erro quadrático médio. As imagens originais estão disponíveis no banco de imagens Wikimedia Commons e foram classificadas manualmente com o auxílio do editor de imagens GIMP. Neste trabalho, para a obtenção das probabilidades *a priori* foram empregadas 13 imagens, tomando a diversidade étnica como critério para sua escolha. As taxas de acerto obtidas variam, pois, de 88,4\% para o espaço RGB a 90,6\% no espaço YCrCb.
 
@@ -65,3 +67,15 @@ A Figura 2 mostra o resultado obtido pelo classificador Naive-Bayes para diferen
 <br>
 <strong>Figura 2:</strong> Comparativo de desempenho e taxas de erro em diferentes espaços de cor.
 </p>
+
+## Referências
+
+* Ion Androutsopoulos, John Koutsias, Konstantinos V Chandrinos, GeorgePaliouras, and Constantine D Spyropoulos. **An evaluation of naive bayesiananti-spam filtering.** arXiv preprint cs/0006013, 2000.
+
+* James C Bezdek, LO Hall, and LP Clarke. **Review of mr image segmen-tation techniques using pattern recognition.** Medical physics, 20(4):1033–1048, 1992.
+
+* Margaret M Fleck, David A Forsyth, and Chris Bregler. **Finding naked people**. Em: European Conference on Computer Vision, pages 593–602. Springer, 1996.
+ 
+* Rein-Lien Hsu, M. Abdel-Mottaleb, and A. K. Jain. **Face detection in color images**. IEEE Transactions on Pattern Analysis and Machine Intelligence, 24(5):696–706, Maio de 2002.
+ 
+* Son Lam Phung, Abdesselam Bouzerdoum, and Douglas Chai.  **Skin segmentation using color pixel classification: analysis and comparison**. IEEEtransactions on pattern analysis and machine intelligence, 27(1):148–154, 2005.
