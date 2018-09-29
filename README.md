@@ -70,12 +70,12 @@ A Figura 2 mostra o resultado obtido pelo classificador Naive-Bayes para diferen
 
 ## Referências
 
-* Ion Androutsopoulos, John Koutsias, Konstantinos V Chandrinos, GeorgePaliouras, and Constantine D Spyropoulos. **An evaluation of naive bayesiananti-spam filtering.** arXiv preprint cs/0006013, 2000.
+* *Ion Androutsopoulos, John Koutsias, Konstantinos V Chandrinos, GeorgePaliouras, and Constantine D Spyropoulos*. **An evaluation of naive bayesiananti-spam filtering.** arXiv preprint cs/0006013, 2000.
 
-* James C Bezdek, LO Hall, and LP Clarke. **Review of mr image segmen-tation techniques using pattern recognition.** Medical physics, 20(4):1033–1048, 1992.
+* *James C Bezdek, LO Hall, and LP Clarke*. **Review of mr image segmen-tation techniques using pattern recognition.** Medical physics, 20(4):1033–1048, 1992.
 
-* Margaret M Fleck, David A Forsyth, and Chris Bregler. **Finding naked people**. Em: European Conference on Computer Vision, pages 593–602. Springer, 1996.
+* *Margaret M Fleck, David A Forsyth, and Chris Bregler*. **Finding naked people**. Em: European Conference on Computer Vision, pages 593–602. Springer, 1996.
  
-* Rein-Lien Hsu, M. Abdel-Mottaleb, and A. K. Jain. **Face detection in color images**. IEEE Transactions on Pattern Analysis and Machine Intelligence, 24(5):696–706, Maio de 2002.
+* *Rein-Lien Hsu, M. Abdel-Mottaleb, and A. K. Jain*. **Face detection in color images**. IEEE Transactions on Pattern Analysis and Machine Intelligence, 24(5):696–706, Maio de 2002.
  
-* Son Lam Phung, Abdesselam Bouzerdoum, and Douglas Chai.  **Skin segmentation using color pixel classification: analysis and comparison**. IEEEtransactions on pattern analysis and machine intelligence, 27(1):148–154, 2005.
+* *Son Lam Phung, Abdesselam Bouzerdoum, and Douglas Chai*. **Skin segmentation using color pixel classification: analysis and comparison**. IEEEtransactions on pattern analysis and machine intelligence, 27(1):148–154, 2005.
