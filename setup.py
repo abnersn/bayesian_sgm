@@ -7,9 +7,11 @@ setup(
     author='Abner',
     author_email='abnersousanascimento@gmail.com',
     url='https://github.com/abnersn/bayesian_sgm',
+    license='GNU',
+    python_requires='>=3.5.5',
     packages=['bayesian_sgm'],
     install_requires=[
-        'numpy',
-        'cv2'
+        'numpy>=1.14.3',
+        'cv2>=3.1.0'
     ]
 )
