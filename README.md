@@ -8,7 +8,7 @@
 [![Twitter Follow](https://img.shields.io/twitter/follow/asnasc.svg?style=flat-square&label=Follow)](https://twitter.com/asnasc) 
 
 
-Um classificador Naive Bayes para a tarefa de segmentação de imagens por cor, que utiliza duas classes de dados em seu modelo estatístico: pele e não-pele. O algoritmo foi desenvolvido para alcançar bons níveis de precisão e velocidade suficiente para ser aplicado em filmagens em tempo real.
+Um classificador Naive Bayes escrito em Python para a tarefa de segmentação de imagens por cor, com duas classes de dados em seu modelo estatístico: pele e não-pele. O algoritmo foi desenvolvido para alcançar bons níveis de precisão e velocidade suficiente para ser aplicado em filmagens em tempo real. Deve ser usado em conjunto com a OpenCV 3.1.0 ou superior.
 
 ## Pré-requisitos
 * Python 3.5.5
