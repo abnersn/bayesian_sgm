@@ -125,7 +125,7 @@ A Figura 2 mostra o resultado obtido pelo classificador Naive-Bayes para diferen
 
 * *Ion Androutsopoulos, John Koutsias, Konstantinos V Chandrinos, GeorgePaliouras, and Constantine D Spyropoulos*. **An evaluation of naive bayesiananti-spam filtering.** arXiv preprint cs/0006013, 2000.
 
-* *James C Bezdek, LO Hall, and LP Clarke*. **Review of mr image segmen-tation techniques using pattern recognition.** Medical physics, 20(4):1033–1048, 1992.
+* *James C Bezdek, LO Hall, and LP Clarke*. **Review of image segmentation techniques using pattern recognition.** Medical physics, 20(4):1033–1048, 1992.
 
 * *Margaret M Fleck, David A Forsyth, and Chris Bregler*. **Finding naked people**. Em: European Conference on Computer Vision, pages 593–602. Springer, 1996.
  
