@@ -92,7 +92,7 @@ Esta modelagem matemática pode ser aplicada para a segmentação de imagens com
 -   ![](https://latex.codecogs.com/gif.latex?P%28B%29) = probabilidade de encontrar pele.
 
 <p align="center">
-<img width="200" src="https://s3-sa-east-1.amazonaws.com/abnersn/github/bayesian-segmentator/demo.jpg">
+<img width="200" src="https://s3.amazonaws.com/abnersn/github/bayesian-segmentator/demo.jpg">
 <br>
 <strong>Figura 1:</strong> Exemplo de imagem do conjunto classificado manualmente.
 </p>
@@ -116,7 +116,7 @@ onde ![](https://latex.codecogs.com/gif.latex?C_i) representa o valor atribuído
 A Figura 2 mostra o resultado obtido pelo classificador Naive-Bayes para diferentes espaços de cor, nomeadamente, HSV, YCrCb e RGB, bem como as respectivas taxas de erro quadrático médio. As imagens originais estão disponíveis no banco de imagens Wikimedia Commons e foram classificadas manualmente com o auxílio do editor de imagens GIMP. Neste trabalho, para a obtenção das probabilidades *a priori* foram empregadas 13 imagens, tomando a diversidade étnica como critério para sua escolha. As taxas de acerto obtidas variam, pois, de 88,4\% para o espaço RGB a 90,6\% no espaço YCrCb.
 
 <p align="center">
-<img width="500" src="https://s3-sa-east-1.amazonaws.com/abnersn/github/bayesian-segmentator/result.png">
+<img width="500" src="https://s3.amazonaws.com/abnersn/github/bayesian-segmentator/result.jpg">
 <br>
 <strong>Figura 2:</strong> Comparativo de desempenho e taxas de erro em diferentes espaços de cor.
 </p>
