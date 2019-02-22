@@ -73,23 +73,23 @@ O problema resume-se, então, a determinar se um dado conjunto de pixels pertenc
 
 O teorema de Bayes, nomeado em homenagem a seu idealizador, Thomas Bayes (1701-1761), estabelece uma relação matemática para as probabilidades de eventos condicionados a evidências prévias. A probabilidade de um evento A, dado que houve a observação de uma evidência B é descrita por:
 
-![](https://latex.codecogs.com/gif.latex?P%28A%7CB%29%3D%5Cfrac%7BP%28B%7CA%29%5Ctimes%7BP%28A%29%7D%7D%7BP%28B%29%7D).
+![](https://s3.amazonaws.com/abnersn/github/bayesian-segmentator/equations/eq_01.png).
 
 Este princípio possui diversas aplicações no campo da inferência estatística, em problemas que demandam a dedução de informações a partir da análise de um conjunto de amostras. Filtros de spam, por exemplo, analisam o texto de diversos emails classificados pelos usuários como spam e não-spam e determinam a classe na qual se enquadra uma nova amostra com base na equação acima.
 
-Classificadores Naive Bayes consideram que as características analisadas são independentes entre si. Isto é, para um conjunto ![](https://latex.codecogs.com/gif.latex?A%3D%7BA_1%2CA_2%2C%5Ccdots%2CA_n%7D) de características condicionadas a uma evidência ![](https://latex.codecogs.com/gif.latex?B), tem-se o produtório:
+Classificadores Naive Bayes consideram que as características analisadas são independentes entre si. Isto é, para um conjunto ![](https://s3.amazonaws.com/abnersn/github/bayesian-segmentator/equations/eq_02.png) de características condicionadas a uma evidência ![](https://s3.amazonaws.com/abnersn/github/bayesian-segmentator/equations/eq_03.png), tem-se o produtório:
 
-![](https://latex.codecogs.com/gif.latex?P%28A_1%2CA_2%2C%5Ccdots%2CA_n%7CB%29%3D%5Cprod_%7Bi%3D1%7D%5E%7Bn%7D%20P%28A_i%7CB%29.)
+![](https://s3.amazonaws.com/abnersn/github/bayesian-segmentator/equations/eq_04.png)
 
 Tal pressuposto, embora possa comprometer a coerência entre o modelo e a relação que de fato ocorre entre os dados, é capaz de classificar as amostras com níveis de erro próximos aos de métodos mais robustos.
 
-Esta modelagem matemática pode ser aplicada para a segmentação de imagens como uma técnica de classificação de pixels em duas classes: pele e não-pele. Para imagens representadas em espaços de cor de 3 canais, por exemplo, considera-se que o evento A representa o fato de um pixel pertencer a uma região de pele. B corresponde ao valor numérico que um pixel assume em determinado canal. Logo, primeiramente é necessário obter ![](https://latex.codecogs.com/gif.latex?P%28A%29), ![](https://latex.codecogs.com/gif.latex?P%28B%7CA%29) e ![](https://latex.codecogs.com/gif.latex?P%28B%29), conhecidos como probabilidades *a priori*. De forma intuitiva, tem-se, pois:
+Esta modelagem matemática pode ser aplicada para a segmentação de imagens como uma técnica de classificação de pixels em duas classes: pele e não-pele. Para imagens representadas em espaços de cor de 3 canais, por exemplo, considera-se que o evento A representa o fato de um pixel pertencer a uma região de pele. B corresponde ao valor numérico que um pixel assume em determinado canal. Logo, primeiramente é necessário obter ![](https://s3.amazonaws.com/abnersn/github/bayesian-segmentator/equations/eq_05.png), ![](https://s3.amazonaws.com/abnersn/github/bayesian-segmentator/equations/eq_06.png) e ![](https://s3.amazonaws.com/abnersn/github/bayesian-segmentator/equations/eq_07.png), conhecidos como probabilidades *a priori*. De forma intuitiva, tem-se, pois:
 
--   ![](https://latex.codecogs.com/gif.latex?P%28B%7CA%29) = probabilidade de dada cor ser pele;
+-   ![](https://s3.amazonaws.com/abnersn/github/bayesian-segmentator/equations/eq_08.png) = probabilidade de dada cor ser pele;
 
--   ![](https://latex.codecogs.com/gif.latex?P%28A%29) = probabilidade de encontrar dada cor;
+-   ![](https://s3.amazonaws.com/abnersn/github/bayesian-segmentator/equations/eq_09.png) = probabilidade de encontrar dada cor;
 
--   ![](https://latex.codecogs.com/gif.latex?P%28B%29) = probabilidade de encontrar pele.
+-   ![](https://s3.amazonaws.com/abnersn/github/bayesian-segmentator/equations/eq_10.png) = probabilidade de encontrar pele.
 
 <p align="center">
 <img width="200" src="https://s3.amazonaws.com/abnersn/github/bayesian-segmentator/demo.jpg">
@@ -99,17 +99,17 @@ Esta modelagem matemática pode ser aplicada para a segmentação de imagens com
 
 A partir de um conjunto de imagens como a Figura 1, é possível calcular as probabilidades *a priori* necessárias para a aplicação do teorema de Bayes. Após a análise de todas as imagens em um conjunto pré classificado com a ajuda de um editor de imagens, os valores obtidos das probabilidades para cada canal são armazenados em uma tabela de referência.
 
-Ao receber uma imagem inédita, o algoritmo busca, para cada pixel, uma probabilidade correspondente na tabela, de acordo com os valores de seus canais, isto é, sua cor. Em seguida os valores obtidos são multiplicados, conforme, para obter a classificação final. Dessa forma, a imagem se torna uma matriz de probabilidades inferidas, com valores entre 0 e 1. Determina-se, então, um limiar ![](https://latex.codecogs.com/gif.latex?%5Clambda), de modo que:
+Ao receber uma imagem inédita, o algoritmo busca, para cada pixel, uma probabilidade correspondente na tabela, de acordo com os valores de seus canais, isto é, sua cor. Em seguida os valores obtidos são multiplicados, conforme, para obter a classificação final. Dessa forma, a imagem se torna uma matriz de probabilidades inferidas, com valores entre 0 e 1. Determina-se, então, um limiar ![](https://s3.amazonaws.com/abnersn/github/bayesian-segmentator/equations/eq_11.png), de modo que:
 
-![](https://latex.codecogs.com/gif.latex?C_A%28p_%7Bi%7D%29%20%3D%20%5Cleft%5C%7B%20%5Cbegin%7Barray%7D%7Bll%7D%200%20%26%20%5Cquad%20p_i%20%5Cleq%20%5Clambda%20%5C%5C%201%20%26%20%5Cquad%20p_i%20%3E%20%5Clambda%20%5Cend%7Barray%7D%20%5Cright.).
+![](https://s3.amazonaws.com/abnersn/github/bayesian-segmentator/equations/eq_12.png).
 
-Onde ![](https://latex.codecogs.com/gif.latex?p_i) é a probabilidade inferida e ![](https://latex.codecogs.com/gif.latex?C_A) corresponde à classe atribuída ao pixel, isto é, 0 para não-pele e 1 para pele.
+Onde ![](https://s3.amazonaws.com/abnersn/github/bayesian-segmentator/equations/eq_13.png) é a probabilidade inferida e ![](https://s3.amazonaws.com/abnersn/github/bayesian-segmentator/equations/eq_14.png) corresponde à classe atribuída ao pixel, isto é, 0 para não-pele e 1 para pele.
 
-Para avaliar a capacidade de acerto do algoritmo, as probabilidades inferidas são comparadas com a classificação realizada manualmente. Considerando ![](https://latex.codecogs.com/gif.latex?%5Cepsilon) o erro quadrático médio do algoritmo aplicado em uma imagem composta por ![](https://latex.codecogs.com/gif.latex?n) pixels, obtém-se:
+Para avaliar a capacidade de acerto do algoritmo, as probabilidades inferidas são comparadas com a classificação realizada manualmente. Considerando ![](https://s3.amazonaws.com/abnersn/github/bayesian-segmentator/equations/eq_15.png) o erro quadrático médio do algoritmo aplicado em uma imagem composta por ![](https://s3.amazonaws.com/abnersn/github/bayesian-segmentator/equations/eq_16.png) pixels, obtém-se:
 
-![](https://latex.codecogs.com/gif.latex?%5Cepsilon%3D%5Csum_%7Bi%3D1%7D%5E%7Bn%7D%7B%5Cfrac%7B%28p_i%20-%20C_i%29%5E2%7D%7Bn%7D%7D),
+![](https://s3.amazonaws.com/abnersn/github/bayesian-segmentator/equations/eq_17.png),
 
-onde ![](https://latex.codecogs.com/gif.latex?C_i) representa o valor atribuído ao ![](https://latex.codecogs.com/gif.latex?i)-ésimo pixel na classificação manual.
+onde ![](https://s3.amazonaws.com/abnersn/github/bayesian-segmentator/equations/eq_18.png) representa o valor atribuído ao ![](https://s3.amazonaws.com/abnersn/github/bayesian-segmentator/equations/eq_19.png)-ésimo pixel na classificação manual.
 
 ### Resultados
 
